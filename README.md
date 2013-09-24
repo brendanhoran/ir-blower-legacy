@@ -3,7 +3,7 @@ ir-blower
 
 IR-Blower consists of three parts.
 
-1) A GTK2 desktop client (written in Ruby/GTK)
+1) A GTK2 desktop client (written in Ruby/GTK) [Systray app + GUI window]
 
 2) A Server (written in Ruby)
 
