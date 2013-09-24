@@ -5,4 +5,4 @@ Inital Commit of :
 * ir-blower-client.rb
 
 Alpha stage code, not realy for real use.
-The Arduini code has not been writen yet.
+The Arduino code has not been writen yet.
