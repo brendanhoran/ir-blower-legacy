@@ -73,7 +73,7 @@ info.signal_connect('activate'){
 
   title = Gtk::Label.new("Using server :")
   srvip = Gtk::Label.new(" #{$srvhst}:#{$srvprt} ")
-  srvst = Gtk::Label.new("res")
+
   
 
   info.signal_connect('delete_event') { Gtk.main_quit }
