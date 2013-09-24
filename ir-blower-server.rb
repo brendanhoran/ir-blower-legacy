@@ -62,7 +62,7 @@ end
       volmute()
 
     else 
-      puts 'We fucked up, bob'
+      Syslog.log(Syslog::LOG_ERR, "IR-BLower got invalid client option!")
     end 
 
 
