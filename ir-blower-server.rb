@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # Author : Brendan Horan
-# # Licence : BSD 3-Clause
-# # Version : 0.0.1
+# Licence : BSD 3-Clause
+# Version : 0.0.1
 
 
 require 'socket'
