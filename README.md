@@ -17,3 +17,10 @@ Must be able to work in a Client/Server mode across local LAN's.
 
 This is still very much a work in progress.
 
+
+Dependency's.
+
+* Ruby
+  - socket
+  - syslog
+  - gtk2
