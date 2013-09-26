@@ -14,6 +14,8 @@ Must be able to work in a Client/Server mode across local LAN's.
 
 This is still very much a work in progress.
 
+Hear is a [screenshot of the current UI](http://cache.horan.hk/images/ir-blower-ui-v0.0.1.png).
+
 Dependencys.
 -------------
 
@@ -25,4 +27,4 @@ Dependencys.
   * gtk2
 
 2. GTK2 support on your system.
-3. Arduino 
+3. Arduino hardware / code
