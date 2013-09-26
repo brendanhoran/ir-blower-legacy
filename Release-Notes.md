@@ -1,4 +1,8 @@
+Release Notes
+=============
+
 Version 0.0.1
+-------------
 
 Inital Commit of :
 * ir-blower-server.rb
