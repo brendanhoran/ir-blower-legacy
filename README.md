@@ -1,26 +1,30 @@
-ir-blower
+IR-Blower
 =========
 
 IR-Blower consists of three parts.
 
-1) A GTK2 desktop client (written in Ruby/GTK) [Systray app + GUI window]
-
-2) A Server (written in Ruby)
-
-3) A hardware control (Written for Arduino)
+* A GTK2 desktop client (written in Ruby/GTK) [Systray app + GUI window]
+* A Server (written in Ruby)
+* A hardware control (Written for Arduino)
 
 
 The concept for the IR-Blower project is simple.
-
 Control a remote device via its inbuilt IR sensor from a desktop app running on a PC.
 Must be able to work in a Client/Server mode across local LAN's.
 
 This is still very much a work in progress.
 
+Hear is a [screenshot of the current UI](http://cache.horan.hk/images/ir-blower-ui-v0.0.1.png).
 
-Dependency's.
+Dependencys
+-------------
 
-* Ruby
-  - socket
-  - syslog
-  - gtk2
+1. Ruby
+
+  List of gems:
+  * socket
+  * syslog
+  * gtk2
+
+2. GTK2 support on your system.
+3. Arduino hardware / code
