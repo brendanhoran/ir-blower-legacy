@@ -5,9 +5,23 @@
 
 require 'gtk2'
 require 'socket'
+require 'yaml'
 
-$srvhst = 'localhost'
-$srvprt = '2000'
+def read_config
+  config = begin
+    YAML.load_file("client-config.yaml")
+    rescue ArgumentError => e
+      puts "Could not parse YAML: #{e.message}"
+  end
+  @srvhst = config["client"]["server_ip"] 
+  @srvprt = config["client"]["server_port"]
+  @d1btn1 = config["device1"]["button1"]
+  @d1btn2 = config["device1"]["button2"]
+  @d1btn3 = config["device1"]["button3"]
+end
+
+read_config
+
 
 trap("TERM") do
   STDERR.puts "IR-Blower Client stopped"
@@ -25,7 +39,7 @@ trap("INT") do
 end
 
 
-$server = TCPSocket.new $srvhst, $srvprt
+$server = TCPSocket.new @srvhst, @srvprt
 
 # Taskbar icon
 vt=Gtk::StatusIcon.new
@@ -40,28 +54,28 @@ vt.signal_connect('activate'){
 
   table = Gtk::Table.new(2, 2, true)
 
-  volUbtn = Gtk::Button.new("Volume Up")
-  volUbtn.signal_connect("clicked") {
+  btn1 = Gtk::Button.new(@d1btn1)
+  btn1.signal_connect("clicked") {
     $server.puts "vup"
 
   }  
 
-  volDbtn = Gtk::Button.new("Volume Down")
-  volDbtn.signal_connect("clicked") {
+  btn2 = Gtk::Button.new(@d1btn2)
+  btn2.signal_connect("clicked") {
     $server.puts "vdn"
   }
 
-  volmute = Gtk::Button.new("Mute")
-  volmute.signal_connect("clicked") {
+  btn3 = Gtk::Button.new(@d1btn3)
+  btn3.signal_connect("clicked") {
     $server.puts "mt"
   }
 
 
   window = Gtk::Window.new
   window.title = "Volume Control"
-  table.attach_defaults(volUbtn, 0, 1, 0, 1)
-  table.attach_defaults(volDbtn, 1, 2, 0, 1)
-  table.attach_defaults(volmute, 0, 2, 1, 2)
+  table.attach_defaults(btn1, 0, 1, 0, 1)
+  table.attach_defaults(btn2, 1, 2, 0, 1)
+  table.attach_defaults(btn3, 0, 2, 1, 2)
   window.add(table)
   window.border_width = 10
   window.show_all
@@ -88,7 +102,7 @@ info.signal_connect('activate'){
   info.title = "Information"
 
   title = Gtk::Label.new("Using server :")
-  srvip = Gtk::Label.new(" #{$srvhst}:#{$srvprt} ")
+  srvip = Gtk::Label.new(" #{@srvhst}:#{@srvprt} ")
 
   
 
