@@ -1,0 +1,8 @@
+client:
+  server_ip : localhost
+  server_port : 2000
+
+device1:
+  button1 : "Volume Up"
+  button2 : "Volume Down"
+  button3 : "Mute"
