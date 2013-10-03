@@ -9,6 +9,22 @@ require 'socket'
 $srvhst = 'localhost'
 $srvprt = '2000'
 
+trap("TERM") do
+  STDERR.puts "IR-Blower Client stopped"
+  exit 2
+end
+
+trap("KILL") do
+  STDERR.puts "IR-BLower Client force killed"
+  exit 2
+end 
+
+trap("INT") do
+  STDERR.puts " IR-Blower Client got Crtl-C, Killed"
+  exit 2
+end
+
+
 $server = TCPSocket.new $srvhst, $srvprt
 
 # Taskbar icon
