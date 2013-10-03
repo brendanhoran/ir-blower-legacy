@@ -25,6 +25,7 @@ Dependencys
   * socket
   * syslog
   * gtk2
+  * yaml
 
 2. GTK2 support on your system.
 3. Arduino hardware / code
