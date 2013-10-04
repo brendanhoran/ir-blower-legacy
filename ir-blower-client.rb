@@ -115,8 +115,46 @@ info.signal_connect('activate'){
   info.show_all
   Gtk.main
   end
-  
+
   status()
+}
+
+devsel=Gtk::ImageMenuItem.new("Device?")
+devsel.signal_connect('activate'){
+
+  def devseclt
+   
+   
+  window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
+  window.set_title  "Select Device"
+  window.border_width = 10
+  window.signal_connect('delete_event') { Gtk.main_quit }
+  desc = Gtk::Label.new(" Select a device to control:")
+
+  radio1 = Gtk::RadioButton.new("Device _1")
+  radio2 = Gtk::RadioButton.new(radio1, "Device _2")
+
+  vbox = Gtk::VBox.new(false, 5)
+  vbox.pack_start(desc)
+  vbox.pack_start(radio1, false, true, 0)
+  vbox.pack_start(radio2, false, true, 0)
+
+  window.add(vbox)
+  window.show_all
+
+  #radio1.signal_connect('button_press_event') {
+  #  puts "clicked 1"
+  #}
+  #
+  radio1.signal_connect("clicked") { puts "dev 1" if radio1.active? }
+  radio2.signal_connect("clicked") { puts "dev 2" if radio2.active? }
+  Gtk.main
+
+  end
+
+
+  devseclt()
+
 }
 
 
@@ -124,6 +162,7 @@ info.signal_connect('activate'){
 quit=Gtk::ImageMenuItem.new(Gtk::Stock::QUIT)
 quit.signal_connect('activate'){ Gtk.main_quit }
 menu=Gtk::Menu.new
+menu.append(devsel)
 menu.append(info)
 menu.append(Gtk::SeparatorMenuItem.new)
 menu.append(quit)
