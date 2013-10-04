@@ -15,9 +15,11 @@ def read_config
   end
   @srvhst = config["client"]["server_ip"] 
   @srvprt = config["client"]["server_port"]
+  @d1name = config["device1"]["name"]
   @d1btn1 = config["device1"]["button1"]
   @d1btn2 = config["device1"]["button2"]
   @d1btn3 = config["device1"]["button3"]
+  @d2name = config["device2"]["name"]
 end
 
 read_config
@@ -131,8 +133,8 @@ devsel.signal_connect('activate'){
   window.signal_connect('delete_event') { Gtk.main_quit }
   desc = Gtk::Label.new(" Select a device to control:")
 
-  radio1 = Gtk::RadioButton.new("Device _1")
-  radio2 = Gtk::RadioButton.new(radio1, "Device _2")
+  radio1 = Gtk::RadioButton.new("#{@d1name}")
+  radio2 = Gtk::RadioButton.new(radio1, "#{@d2name}")
 
   vbox = Gtk::VBox.new(false, 5)
   vbox.pack_start(desc)

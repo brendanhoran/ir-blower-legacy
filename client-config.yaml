@@ -3,6 +3,10 @@ client:
   server_port : 2000
 
 device1:
+  name : "Device1"
   button1 : "Volume Up"
   button2 : "Volume Down"
   button3 : "Mute"
+
+device2:
+  name : "Device2"
