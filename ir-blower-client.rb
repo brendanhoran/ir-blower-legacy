@@ -159,6 +159,7 @@ quit=Gtk::ImageMenuItem.new(Gtk::Stock::QUIT)
 quit.signal_connect('activate'){ Gtk.main_quit }
 menu=Gtk::Menu.new
 menu.append(devsel)
+menu.append(Gtk::SeparatorMenuItem.new)
 menu.append(info)
 menu.append(Gtk::SeparatorMenuItem.new)
 menu.append(quit)
