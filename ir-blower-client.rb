@@ -142,10 +142,6 @@ devsel.signal_connect('activate'){
   window.add(vbox)
   window.show_all
 
-  #radio1.signal_connect('button_press_event') {
-  #  puts "clicked 1"
-  #}
-  #
   radio1.signal_connect("clicked") { puts "dev 1" if radio1.active? }
   radio2.signal_connect("clicked") { puts "dev 2" if radio2.active? }
   Gtk.main
