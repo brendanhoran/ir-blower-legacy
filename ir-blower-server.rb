@@ -59,13 +59,22 @@ end
    
     case command 
   
-    when "vup"
+    when "d1b1"
       volup()
 
-    when "vdn"
+    when "d1b2"
       voldown()
 
-    when "mt" 
+    when "d1b3" 
+      volmute()
+
+    when "d2b1"
+       volup()
+    
+    when "d2b2"
+      voldown()
+
+    when "d2b3"
       volmute()
 
     else 
