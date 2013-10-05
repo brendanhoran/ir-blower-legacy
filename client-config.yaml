@@ -10,3 +10,6 @@ device1:
 
 device2:
   name : "Device2"
+  button1 : "Oversampling"
+  button2 : "Filter"
+  button3 : "input"

@@ -20,6 +20,9 @@ def read_config
   @d1btn2 = config["device1"]["button2"]
   @d1btn3 = config["device1"]["button3"]
   @d2name = config["device2"]["name"]
+  @d2btn1 = config["device2"]["button1"]
+  @d2btn2 = config["device2"]["button2"]
+  @d2btn3 = config["device2"]["button3"]
 end
 
 read_config
@@ -52,24 +55,24 @@ vt.tooltip='Volume Control'
 # left click pop up app
 vt.signal_connect('activate'){
 
-  def mainvol
+  def d1
 
   table = Gtk::Table.new(2, 2, true)
 
   btn1 = Gtk::Button.new(@d1btn1)
   btn1.signal_connect("clicked") {
-    $server.puts "vup"
+    $server.puts "d1b1"
 
   }  
 
   btn2 = Gtk::Button.new(@d1btn2)
   btn2.signal_connect("clicked") {
-    $server.puts "vdn"
+    $server.puts "d1b2"
   }
 
   btn3 = Gtk::Button.new(@d1btn3)
   btn3.signal_connect("clicked") {
-    $server.puts "mt"
+    $server.puts "d1b3"
   }
 
 
@@ -87,7 +90,50 @@ vt.signal_connect('activate'){
   Gtk.main
   end
 
-  mainvol()
+  def d2
+
+  table = Gtk::Table.new(2, 2, true)
+
+  btn1 = Gtk::Button.new(@d2btn1)
+  btn1.signal_connect("clicked") {
+    $server.puts "d2b1"
+
+  }  
+
+  btn2 = Gtk::Button.new(@d2btn2)
+  btn2.signal_connect("clicked") {
+    $server.puts "d2b2"
+  }
+
+  btn3 = Gtk::Button.new(@d2btn3)
+  btn3.signal_connect("clicked") {
+    $server.puts "d2b3"
+  }
+
+
+  window = Gtk::Window.new
+  window.title = "DAC Control"
+  table.attach_defaults(btn1, 0, 1, 0, 1)
+  table.attach_defaults(btn2, 1, 2, 0, 1)
+  table.attach_defaults(btn3, 0, 2, 1, 2)
+  window.add(table)
+  window.border_width = 10
+  window.show_all
+
+  window.signal_connect('delete_event') { Gtk.main_quit }
+  window.signal_connect('destroy') { Gtk.main_quit }
+  Gtk.main
+  end
+
+
+case @d
+  when 1
+    d1()
+  when 2
+    d2()
+  else
+    puts "No Device Selected"
+  end
 }
 
 
@@ -98,13 +144,14 @@ info.signal_connect('activate'){
   def status
  
   info = Gtk::Window.new
-  table = Gtk::Table.new(2, 2, true)
+  table = Gtk::Table.new(2, 3, true)
   
   info.border_width = 10
   info.title = "Information"
 
   title = Gtk::Label.new("Using server :")
   srvip = Gtk::Label.new(" #{@srvhst}:#{@srvprt} ")
+  curdev = Gtk::Label.new("current dev")
 
   
 
@@ -112,6 +159,7 @@ info.signal_connect('activate'){
 
   table.attach_defaults(title, 0, 1, 0, 1)
   table.attach_defaults(srvip, 1, 2, 0, 1)
+  table.attach_defaults(curdev,0, 1, 2, 3)
   info.add(table)
   info.border_width = 10
   info.show_all
@@ -124,7 +172,7 @@ info.signal_connect('activate'){
 devsel=Gtk::ImageMenuItem.new("Device?")
 devsel.signal_connect('activate'){
 
-  def devseclt
+  def devseclt()
    
    
   window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
@@ -133,19 +181,19 @@ devsel.signal_connect('activate'){
   window.signal_connect('delete_event') { Gtk.main_quit }
   desc = Gtk::Label.new(" Select a device to control:")
 
-  radio1 = Gtk::RadioButton.new("#{@d1name}")
-  radio2 = Gtk::RadioButton.new(radio1, "#{@d2name}")
+  dev1 = Gtk::RadioButton.new("#{@d1name}")
+  dev2 = Gtk::RadioButton.new(dev1, "#{@d2name}")
 
   vbox = Gtk::VBox.new(false, 5)
   vbox.pack_start(desc)
-  vbox.pack_start(radio1, false, true, 0)
-  vbox.pack_start(radio2, false, true, 0)
+  vbox.pack_start(dev1, false, true, 0)
+  vbox.pack_start(dev2, false, true, 0)
 
   window.add(vbox)
   window.show_all
 
-  radio1.signal_connect("clicked") { puts "dev 1" if radio1.active? }
-  radio2.signal_connect("clicked") { puts "dev 2" if radio2.active? }
+  dev1.signal_connect("clicked") { @d = 1 if dev1.active? }
+  dev2.signal_connect("clicked") { @d = 2 if dev2.active? }
   Gtk.main
 
   end
