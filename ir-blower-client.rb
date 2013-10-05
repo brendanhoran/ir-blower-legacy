@@ -7,6 +7,8 @@ require 'gtk2'
 require 'socket'
 require 'yaml'
 
+@d = 1
+
 def read_config
   config = begin
     YAML.load_file("client-config.yaml")
