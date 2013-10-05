@@ -146,14 +146,15 @@ info.signal_connect('activate'){
   def status
  
   info = Gtk::Window.new
-  table = Gtk::Table.new(2, 3, true)
+  table = Gtk::Table.new(3, 3, true)
   
   info.border_width = 10
   info.title = "Information"
 
   title = Gtk::Label.new("Using server :")
   srvip = Gtk::Label.new(" #{@srvhst}:#{@srvprt} ")
-  curdev = Gtk::Label.new("current dev")
+  devstr = Gtk::Label.new("Current Device :")
+  curdev = Gtk::Label.new(" #{@d} ")
 
   
 
@@ -161,7 +162,8 @@ info.signal_connect('activate'){
 
   table.attach_defaults(title, 0, 1, 0, 1)
   table.attach_defaults(srvip, 1, 2, 0, 1)
-  table.attach_defaults(curdev,0, 1, 2, 3)
+  table.attach_defaults(devstr,0, 1, 2, 3)
+  table.attach_defaults(curdev,1, 2, 2, 3)
   info.add(table)
   info.border_width = 10
   info.show_all
