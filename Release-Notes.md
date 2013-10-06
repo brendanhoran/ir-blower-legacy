@@ -19,6 +19,6 @@ Inital Commit of :
 * client-config.yaml
 * server-config.yaml
 * ir-blower.ino
-* 
+
 Still Alpha stage. Buttons and device mapping work.
 Sending commands to arduino works.
