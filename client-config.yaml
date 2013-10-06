@@ -1,6 +1,7 @@
 client:
   server_ip : localhost
   server_port : 2000
+  default_dev : 1
 
 device1:
   name : "Device1"
