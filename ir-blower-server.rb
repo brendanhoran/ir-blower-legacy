@@ -6,11 +6,26 @@
 
 require 'socket'
 require 'syslog'
+require 'yaml'
+require 'serialport'
 
-$srvprt = 2000
+
+def read_config
+  config = begin
+    YAML.load_file("server-config.yaml")
+    rescue ArgumentError => e
+      puts "Could not parse YAML: #{e.message}"
+  end
+  @srvprt = config["server"]["listen_port"]
+  @ttydev = config["server"]["tty_dev"]
+end
+
+read_config
 
 
-$server = TCPServer.new $srvprt
+$server = TCPServer.new @srvprt
+
+$tty = SerialPort.open("#{@ttydev}", 9600, 8, 1,  SerialPort::NONE)
 
 Syslog.open
 Syslog.log(Syslog::LOG_INFO, "IR-Blower starting on port : #{$srvprt}")
@@ -31,22 +46,45 @@ trap("INT") do
   exit 2
 end
 
-  def volup
+  def d1b1
 
-    puts "Vol up"
-
-  end
-
-  def voldown
-
-    puts "Vol down"
+    puts "dev1, btn1"
+    $tty.write "1"
 
   end
 
-  def volmute
+  def d1b2
 
-    puts "Vol mute"
+    puts "dev1, btn2"
+    $tty.write "2"
+  end
+
+  def d1b3
+
+    puts "dev1, btn3"
+    $tty.write "3"
  
+  end
+
+  def d2b1
+
+    puts "dev2, btn1"
+    $tty.write "4"
+ 
+  end
+
+  def d2b2
+
+    puts "dev2, btn2"
+    $tty.write "5"
+
+  end
+
+  def d2b3
+
+    puts "dev2, btn3"
+    $tty.write "6"
+
   end
   
 
@@ -60,22 +98,22 @@ end
     case command 
   
     when "d1b1"
-      volup()
+      d1b1()
 
     when "d1b2"
-      voldown()
+      d1b2()
 
     when "d1b3" 
-      volmute()
+      d1b3()
 
     when "d2b1"
-       volup()
+       d2b1()
     
     when "d2b2"
-      voldown()
+      d2b2()
 
     when "d2b3"
-      volmute()
+      d2b3()
 
     else 
       Syslog.log(Syslog::LOG_ERR, "IR-BLower got invalid client option!")

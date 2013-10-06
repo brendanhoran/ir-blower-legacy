@@ -1,0 +1,3 @@
+server:
+  listen_port : 2000
+  tty_dev : /dev/ttyUSB3
