@@ -7,7 +7,7 @@ require 'gtk2'
 require 'socket'
 require 'yaml'
 
-@d = 1
+#@d = 1
 
 def read_config
   config = begin
@@ -17,6 +17,7 @@ def read_config
   end
   @srvhst = config["client"]["server_ip"] 
   @srvprt = config["client"]["server_port"]
+  @actdev = config["client"]["default_dev"]
   @d1name = config["device1"]["name"]
   @d1btn1 = config["device1"]["button1"]
   @d1btn2 = config["device1"]["button2"]
@@ -128,7 +129,7 @@ vt.signal_connect('activate'){
   end
 
 
-case @d
+case @actdev
   when 1
     d1()
   when 2
@@ -154,7 +155,7 @@ info.signal_connect('activate'){
   title = Gtk::Label.new("Using server :")
   srvip = Gtk::Label.new(" #{@srvhst}:#{@srvprt} ")
   devstr = Gtk::Label.new("Current Device :")
-  curdev = Gtk::Label.new(" #{@d} ")
+  curdev = Gtk::Label.new(" #{@actdev} ")
 
   
 
@@ -196,8 +197,8 @@ devsel.signal_connect('activate'){
   window.add(vbox)
   window.show_all
 
-  dev1.signal_connect("clicked") { @d = 1 if dev1.active? }
-  dev2.signal_connect("clicked") { @d = 2 if dev2.active? }
+  dev1.signal_connect("clicked") { @actdev = 1 if dev1.active? }
+  dev2.signal_connect("clicked") { @actdev = 2 if dev2.active? }
   Gtk.main
 
   end
