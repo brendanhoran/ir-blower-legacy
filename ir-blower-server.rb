@@ -9,6 +9,7 @@ require 'syslog'
 require 'yaml'
 require 'serialport'
 
+Syslog.open
 
 def read_config
   config = begin
@@ -25,10 +26,19 @@ read_config
 
 $server = TCPServer.new @srvprt
 
-$tty = SerialPort.open("#{@ttydev}", 9600, 8, 1,  SerialPort::NONE)
+def opentty
+  if File.chardev?("#{@ttydev}") == true
+    $tty = SerialPort.open("#{@ttydev}", 9600, 8, 1,  SerialPort::NONE)
+  else
+    Syslog.log(Syslog::LOG_ERR, "IR-Blower, Can't open TTY, exiting.")
+    exit 2
+  end
 
-Syslog.open
-Syslog.log(Syslog::LOG_INFO, "IR-Blower starting on port : #{$srvprt}")
+end
+
+opentty
+
+Syslog.log(Syslog::LOG_INFO, "IR-Blower starting on port : #{@srvprt}")
 
 Signal.trap("TERM") do
   Syslog.log(Syslog::LOG_WARNING, "IR-Blower stopped")
