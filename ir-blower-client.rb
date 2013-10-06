@@ -7,7 +7,6 @@ require 'gtk2'
 require 'socket'
 require 'yaml'
 
-#@d = 1
 
 def read_config
   config = begin
@@ -178,8 +177,8 @@ devsel=Gtk::ImageMenuItem.new("Device?")
 devsel.signal_connect('activate'){
 
   def devseclt()
-   
-   
+
+ 
   window = Gtk::Window.new(Gtk::Window::TOPLEVEL)
   window.set_title  "Select Device"
   window.border_width = 10
@@ -189,6 +188,16 @@ devsel.signal_connect('activate'){
   dev1 = Gtk::RadioButton.new("#{@d1name}")
   dev2 = Gtk::RadioButton.new(dev1, "#{@d2name}")
 
+  # set the active btn from last state
+    case @actdev
+    when 1
+      dev1.set_active true      
+    when 2
+      dev2.set_active true
+    else
+    end
+
+  
   vbox = Gtk::VBox.new(false, 5)
   vbox.pack_start(desc)
   vbox.pack_start(dev1, false, true, 0)
