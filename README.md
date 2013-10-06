@@ -14,7 +14,7 @@ Must be able to work in a Client/Server mode across local LAN's.
 
 This is still very much a work in progress.
 
-Hear is a [screenshot of the current UI](http://cache.horan.hk/images/ir-blower-ui-v0.0.1.png).
+Hear is a [screenshot of the current UI](http://cache.horan.hk/images/ir-blower-ui-v0.0.2.png).
 
 Dependencys
 -------------
