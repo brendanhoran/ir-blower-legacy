@@ -10,8 +10,9 @@ IRsend irsend;
 int ctlmsg = 0;   
 
 void setup() {
-        Serial.begin(9600);     // opens serial port, sets data rate to 9600 bps
-        Serial.print ("Connected:9600");
+        Serial.begin(9600);     
+        Serial.println ("Connected:9600");
+        Serial.println ("OK");
 }
 
 void loop() {
@@ -21,8 +22,10 @@ void loop() {
                 // read data 
                 ctlmsg = Serial.read();
 
-                // send IR signal based on value from ir-blower server
-               // 49 =1 , 50=2 etc
+               // send IR signal based on value from ir-blower server
+               // 49 = dev 1, btn1 (rubyval, 1)
+               // 54 = dev 2, btn3 (rubyval, 6)
+               
                 switch (ctlmsg) {
                   case 49:
                     Serial.print("49");
@@ -38,6 +41,14 @@ void loop() {
                     break;
                   case 52:
                     Serial.print("52");
+                 //   irsend.send
+                    break;
+                  case 53:
+                    Serial.print("53");
+                 //   irsend.send
+                    break;
+                  case 54:
+                    Serial.print("54");
                  //   irsend.send
                     break;
                 }
