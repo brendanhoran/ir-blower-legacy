@@ -29,27 +29,33 @@ void loop() {
                 switch (ctlmsg) {
                   case 49:
                     Serial.print("49");
-                  //  irsend.send
+                  //  irsend.sendNEC(0x80???,32)
+                  //   delay(100);
                     break;
                   case 50:
                     Serial.print("50");
-                 //   irsend.send
+                 //   irsend.sendNEC(0x80???,32)
+                 //   delay(100);
                     break;
                   case 51:
                     Serial.print("51");
-                 //   irsend.send
+                 //   irsend.sendNEC(0x80???,32)
+                 //   delay(100);
                     break;
                   case 52:
                     Serial.print("52");
-                 //   irsend.send
+                 //   irsend.sendNEC(0x48???,32)
+                 //   delay(100);
                     break;
                   case 53:
                     Serial.print("53");
-                 //   irsend.send
+                 //   irsend.sendNEC(0x48???,32)
+                 //   delay(100);
                     break;
                   case 54:
                     Serial.print("54");
-                 //   irsend.send
+                 //   irsend.sendNEC(0x48???,32)
+                 //   delay(100);
                     break;
                 }
                
