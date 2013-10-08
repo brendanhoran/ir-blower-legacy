@@ -50,7 +50,7 @@ void loop() {
                     break;
                   case 52:
                     Serial.print("52");
-                 // 0x80,0x90 = master8 vol_
+                 // 0x80,0x90 = master8 vol-
                  //   irsend.sendNEC(0x807f906f,32)
                  //   delay(100);
                     break;
