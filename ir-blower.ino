@@ -56,7 +56,7 @@ void loop() {
                     break;
                   case 53:
                     Serial.print("53");
-                 // 0x48,0x0d = NFB17 select1
+                 // 0x48,0x09 = NFB17 select1
                  //   irsend.sendNEC(0x48b709f6,32)
                  //   delay(100);
                     break;
