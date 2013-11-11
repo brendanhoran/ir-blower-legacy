@@ -27,13 +27,13 @@ read_config
 $server = TCPServer.new @srvprt
 
 def opentty
-  if File.chardev?("#{@ttydev}") == true
-    $tty = SerialPort.open("#{@ttydev}", 9600, 8, 1,  SerialPort::NONE)
-  else
-    Syslog.log(Syslog::LOG_ERR, "IR-Blower, Can't open TTY, exiting.")
-    exit 2
-  end
-
+  begin
+    File.chardev?("#{@ttydev}") == true
+      $tty = SerialPort.open("#{@ttydev}", 9600, 8, 1,  SerialPort::NONE)
+    rescue 
+      Syslog.log(Syslog::LOG_ERR, "IR-Blower, Can't open TTY, exiting.")
+      exit 2
+    end
 end
 
 opentty
