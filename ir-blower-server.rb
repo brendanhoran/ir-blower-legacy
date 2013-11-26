@@ -9,6 +9,16 @@ require 'syslog'
 require 'yaml'
 require 'serialport'
 
+def checkuid
+  uid = Process.uid
+  if uid == 0
+   read_config
+  else
+   puts "You need to be root to run the server"
+   exit 2
+  end
+end
+
 Syslog.open
 
 def read_config
@@ -21,6 +31,7 @@ def read_config
   @ttydev = config["server"]["tty_dev"]
 end
 
+checkuid
 read_config
 
 
