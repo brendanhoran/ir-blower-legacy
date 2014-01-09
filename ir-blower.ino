@@ -32,56 +32,68 @@ void loop() {
                 switch (ctlmsg) {
                   case 49:
                     Serial.print("49");
-                  // 0x80,0x84 = master8 select key
-                  //  irsend.sendNEC(0x807f847b,32)
-                  //   delay(100);
+                    // Master 9 input select +
+                    irsend.sendNEC(0x1FE01FE,32);
+                    delay(100);
                     break;
                   case 50:
                     Serial.print("50");
-                 // 0x80,0x88 = master8 mute
-                 //   irsend.sendNEC(0x807f8877,32)
-                 //   delay(100);
+                    // Master 9 input select -
+                    irsend.sendNEC(0x1FE21DE,32);
+                    delay(100);
                     break;
                   case 51:
                     Serial.print("51");
-                 // 0x80,0x8c = master8 vol+
-                 //   irsend.sendNEC(0x807f8c73,32)
-                 //   delay(100);
+                    // Master 9 Mute
+                    irsend.sendNEC(0x1FE11EE,32);
+                    delay(100);
                     break;
                   case 52:
                     Serial.print("52");
-                 // 0x80,0x90 = master8 vol-
-                 //   irsend.sendNEC(0x807f906f,32)
-                 //   delay(100);
+                    // Master 9 vol +
+                    irsend.sendNEC(0x1FE31CE,32);
+                   delay(100);
                     break;
                   case 53:
                     Serial.print("53");
-                 // 0x48,0x09 = NFB17 select1
-                 //   irsend.sendNEC(0x48b709f6,32)
-                 //   delay(100);
+                    // Master 9 vol -
+                    irsend.sendNEC(0x1FE09F6,32);
+                    delay(100);
                     break;
                   case 54:
                     Serial.print("54");
-                 // 0x48,0x0d = NFB17 select2
-                 //   irsend.sendNEC(0x48b70df2,32)
-                 //   delay(100);
+                    // Ref 5.32 USB input
+                    irsend.sendNEC(0x12ED906F,32);
+                    delay(100);
                     break;
                   case 55:
                     Serial.print("55");
-                 // 0x48,0x1a = NFB17 select3
-                 // irsend.sendNEC(0x48b71ae5,32)
+                    // Ref 5.32 coaxial 2
+                    irsend.sendNEC(0x12EDB04F,32);
                     delay(100);
                     break;
                   case 56:
                     Serial.print("56");
-                 // 0x48,0x01 = NFB17 select4
-                 // irsend.sendNEC(0x48b701fe,32)
+                    // Ref 5.32 coaxial 3
+                    irsend.sendNEC(0x12ED58A7,32);
                     delay(100);
                     break;
                   case 57:
                     Serial.print("57");
-                 // 0x48,0x00 = NFB17 select5
-                 // irsend.sendNEC(0x48b700ff,32)
+                    // Ref 5.32 optical 4
+                    irsend.sendNEC(0x12ED807F,32);
+                    delay(100);
+                    break;
+                  case 58:
+                    Serial.print("58");
+                    // Ref 5.32 optical 5
+                    irsend.sendNEC(0x12ED00FF,32);
+                    delay(100);
+                    break;
+                  case 59:
+                    Serial.print("59");
+                    // Ref 5.32 Gain high/low
+                    irsend.sendNEC(0x12ED40BF,32);
                     delay(100);
                     break;
                 }
