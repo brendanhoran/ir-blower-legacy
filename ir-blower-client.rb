@@ -50,7 +50,7 @@ $server = TCPSocket.new @srvhst, @srvprt
 
 # Taskbar icon
 vt=Gtk::StatusIcon.new
-vt.stock=Gtk::Stock::DIALOG_INFO
+vt.pixbuf=Gdk::Pixbuf.new('sys-icn.png')
 vt.tooltip='Volume Control'
 
 
