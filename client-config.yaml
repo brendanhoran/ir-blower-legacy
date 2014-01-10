@@ -4,13 +4,13 @@ client:
   default_dev : 1
 
 device1:
-  name : "Device1"
+  name : "Master 9"
   button1 : "Volume Up"
   button2 : "Volume Down"
   button3 : "Mute"
 
 device2:
-  name : "Device2"
-  button1 : "Oversampling"
-  button2 : "Filter"
-  button3 : "input"
+  name : "Refrence 5.32"
+  button1 : "Gain high/low"
+  button2 : "USB input"
+  button3 : "Optical input"
