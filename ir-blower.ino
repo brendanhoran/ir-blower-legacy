@@ -12,6 +12,9 @@ IRsend irsend;
 // Variable to hold incoming serial comms
 int ctlmsg = 0;   
 
+// Define Power controler pin
+pindMode(4,OUTPUT)
+
 void setup() {
         Serial.begin(9600);     
         Serial.println ("Connected:9600");
@@ -95,6 +98,13 @@ void loop() {
                     // Ref 5.32 Gain high/low
                     irsend.sendNEC(0x12ED40BF,32);
                     delay(100);
+                    break;
+                  case 60:
+                    Serial.print("60");
+                    // Master 9 power control
+                    digitalWrite(4,HIGH);
+                    delay(500)
+                    digitalWrite(4,LOW);
                     break;
                 }
                
