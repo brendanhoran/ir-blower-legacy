@@ -13,9 +13,11 @@ IRsend irsend;
 int ctlmsg = 0;   
 
 // Define Power controler pin
-pindMode(4,OUTPUT)
+int pctl = 4;
+
 
 void setup() {
+        pinMode(pctl,OUTPUT);
         Serial.begin(9600);     
         Serial.println ("Connected:9600");
         Serial.println ("OK");
@@ -102,9 +104,9 @@ void loop() {
                   case 60:
                     Serial.print("60");
                     // Master 9 power control
-                    digitalWrite(4,HIGH);
-                    delay(500)
-                    digitalWrite(4,LOW);
+                    digitalWrite(pctl,HIGH);
+                    delay(500);
+                    digitalWrite(pctl,LOW);
                     break;
                 }
                
