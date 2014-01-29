@@ -1,6 +1,5 @@
-// Author : Brendan Horan
-// Licence : BSD 3-Clause
-// Arduino-IRremote Licence : GNU LESSER GENERAL PUBLIC LICENCE Version 2.1
+// Author  : Brendan Horan
+// License : BSD 3-Clause
 // Version : 0.0.1
 
 
