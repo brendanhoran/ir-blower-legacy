@@ -84,29 +84,63 @@ end
 
     puts "dev1, btn3"
     $tty.write "3"
- 
   end
+
+  def d1b4
+
+   puts "dev1, btn4"
+   $tty.write "4"
+  end
+
+  def d1b5
+
+    puts "dev1, btn5"
+    $tty.write "5"
+  end
+
+  def d1b6
+
+    puts "dev1, btn6"
+    $tty.write "6"
+  end
+
 
   def d2b1
 
     puts "dev2, btn1"
-    $tty.write "4"
- 
+    $tty.write "a"
   end
 
   def d2b2
 
     puts "dev2, btn2"
-    $tty.write "5"
-
+    $tty.write "b"
   end
 
   def d2b3
 
     puts "dev2, btn3"
-    $tty.write "6"
-
+    $tty.write "c"
   end
+
+  def d2b4
+
+    puts "dev2, btn4"
+    $tty.write "d"
+  end
+
+  def d2b5
+
+    puts "dev2, btn5"
+    $tty.write "e"
+  end
+
+  def d2b6
+
+    puts "dev2, btn6"
+    $tty.write "f"
+  end
+    
   
 
   loop do
@@ -127,14 +161,32 @@ end
     when "d1b3" 
       d1b3()
 
+    when "d1b4"
+      d1b4()
+
+    when "d1b5"
+      d1b5()
+   
+    when "d1b6"
+      d1b6()
+
     when "d2b1"
-       d2b1()
+      d2b1()
     
     when "d2b2"
       d2b2()
 
     when "d2b3"
       d2b3()
+
+    when "d2b4"
+      d2b4()
+
+    when "d2b5"
+      d2b5()
+
+    when "d2b6"
+      d2b6()
 
     else 
       Syslog.log(Syslog::LOG_ERR, "IR-BLower got invalid client option!")
