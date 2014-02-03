@@ -175,19 +175,19 @@ vt.signal_connect('activate'){
   }
   in2 = Gtk::RadioButton.new(in1, "#{@d2btn3}")
   in2.signal_connect("clicked") {
-    $server.puts "d2b2", @actin = 2 if in2.active?
+    $server.puts "d2b4", @actin = 2 if in2.active?
   }
   in3 = Gtk::RadioButton.new(in1, "#{@d2btn4}")
   in3.signal_connect("clicked") {
-    $server.puts "d2b3", @actin = 3 if in3.active?
+    $server.puts "d2b5", @actin = 3 if in3.active?
   }
   in4 = Gtk::RadioButton.new(in1, "#{@d2btn5}")
   in4.signal_connect("clicked") {
-    $server.puts "d2b4", @actin = 4 if in4.active?
+    $server.puts "d2b2", @actin = 4 if in4.active?
   }
   in5 = Gtk::RadioButton.new(in1, "#{@d2btn6}")
   in5.signal_connect("clicked") {
-    $server.puts "d2b5", @actin = 5 if in5.active?
+    $server.puts "d2b3", @actin = 5 if in5.active?
   }
 
     case @actin
