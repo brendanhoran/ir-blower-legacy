@@ -52,7 +52,6 @@ trap("INT") do
 end
 
 
-$server = TCPSocket.new @srvhst, @srvprt
 
 # Taskbar icon
 vt=Gtk::StatusIcon.new
@@ -64,6 +63,8 @@ vt.tooltip='Volume Control'
 vt.signal_connect('activate'){
 
   def d1
+ 
+ $server = TCPSocket.new @srvhst, @srvprt
 
   vbox = Gtk::VBox.new(false, 0)
   vollab = Gtk::Label.new("Volume Options :")
@@ -145,11 +146,14 @@ vt.signal_connect('activate'){
   window.signal_connect('delete_event') { Gtk.main_quit }
   window.signal_connect('destroy') { Gtk.main_quit }
   Gtk.main
+  $server.close
   end
 
   def d2
-
-
+ 
+  $server = TCPSocket.new @srvhst, @srvprt
+  
+ 
   vbox = Gtk::VBox.new(false, 0)
   hbox1 = Gtk::HBox.new(false, 0)
   hbox2 = Gtk::HBox.new(false, 0)
@@ -226,6 +230,7 @@ vt.signal_connect('activate'){
   window.signal_connect('delete_event') { Gtk.main_quit }
   window.signal_connect('destroy') { Gtk.main_quit }
   Gtk.main
+  $server.close
   end
 
 
