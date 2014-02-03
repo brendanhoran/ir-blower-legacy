@@ -52,6 +52,7 @@ trap("INT") do
 end
 
 
+#$server = TCPSocket.new @srvhst, @srvprt
 
 # Taskbar icon
 vt=Gtk::StatusIcon.new
@@ -258,19 +259,26 @@ info.signal_connect('activate'){
   info.title = "Information"
 
   title = Gtk::Label.new("Using server :")
+  title.set_alignment(0,0)
   srvip = Gtk::Label.new(" #{@srvhst}:#{@srvprt} ")
   devstr = Gtk::Label.new("Current Device :")
+  devstr.set_alignment(0,0)
   curdev = Gtk::Label.new(" #{@actdev} ")
-
+ 
+  vbox = Gtk::VBox.new(false, 0) 
+  hbox1 = Gtk::HBox.new(false, 0)
+  hbox2 = Gtk::HBox.new(false, 0)
+  hbox1.pack_start title, true, true, 0
+  hbox1.pack_start srvip, true, true, 0
+  hbox2.pack_start devstr, true, true, 0
+  hbox2.pack_start curdev, true, true, 0
   
 
   info.signal_connect('delete_event') { Gtk.main_quit }
 
-  table.attach_defaults(title, 0, 1, 0, 1)
-  table.attach_defaults(srvip, 1, 2, 0, 1)
-  table.attach_defaults(devstr,0, 1, 2, 3)
-  table.attach_defaults(curdev,1, 2, 2, 3)
-  info.add(table)
+  vbox.pack_start hbox1, true, true, 0
+  vbox.pack_start hbox2, true, true, 0
+  info.add(vbox)
   info.border_width = 10
   info.show_all
   Gtk.main
