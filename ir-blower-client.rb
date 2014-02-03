@@ -21,10 +21,16 @@ def read_config
   @d1btn1 = config["device1"]["button1"]
   @d1btn2 = config["device1"]["button2"]
   @d1btn3 = config["device1"]["button3"]
+  @d1btn4 = config["device1"]["button4"]
+  @d1btn5 = config["device1"]["button5"]
+  @d1btn6 = config["device1"]["button6"]
   @d2name = config["device2"]["name"]
   @d2btn1 = config["device2"]["button1"]
   @d2btn2 = config["device2"]["button2"]
   @d2btn3 = config["device2"]["button3"]
+  @d2btn4 = config["device2"]["button4"]
+  @d2btn5 = config["device2"]["button5"]
+  @d2btn6 = config["device2"]["button6"]
 end
 
 read_config
@@ -59,17 +65,33 @@ vt.signal_connect('activate'){
 
   def d1
 
-  table = Gtk::Table.new(2, 2, true)
+  vbox = Gtk::VBox.new(false, 0)
+  vollab = Gtk::Label.new("Volume Options :")
+  vollab.set_alignment(0,0)
+  hbox0 = Gtk::HBox.new(false, 0)
+  hbox1 = Gtk::HBox.new(false, 0)
+  hbox2 = Gtk::HBox.new(false, 0)
+  hbox3 = Gtk::HBox.new(false, 0)
+  hbox4 = Gtk::HBox.new(false, 0)
+  hboxinl = Gtk::HBox.new(false, 0)
+  inlab = Gtk::Label.new("Input Options :")
+  inlab.set_alignment(0,0)
+  hboxpl = Gtk::HBox.new(false, 0)
+  pwlab = Gtk::Label.new("Power Options :")
+  pwlab.set_alignment(0,0)
+  
+ sep1 = Gtk::HSeparator.new
+ sep2 = Gtk::HSeparator.new
 
   btn1 = Gtk::Button.new(@d1btn1)
   btn1.signal_connect("clicked") {
-    $server.puts "d1b1"
+    $server.puts "d1b4"
 
   }  
 
   btn2 = Gtk::Button.new(@d1btn2)
   btn2.signal_connect("clicked") {
-    $server.puts "d1b2"
+    $server.puts "d1b5"
   }
 
   btn3 = Gtk::Button.new(@d1btn3)
@@ -77,13 +99,46 @@ vt.signal_connect('activate'){
     $server.puts "d1b3"
   }
 
+  btn4 = Gtk::Button.new(@d1btn4)
+  btn4.signal_connect("clicked") {
+    $server.puts "d1b1"
+  }
+
+  btn5 = Gtk::Button.new(@d1btn5)
+  btn5.signal_connect("clicked") {
+    $server.puts "d1b2"
+  }
+
+  btn6 = Gtk::Button.new(@d1btn6)
+  btn6.signal_connect("clicked") {
+    $server.puts "d1b6"
+  }
+
+
 
   window = Gtk::Window.new
-  window.title = "Volume Control"
-  table.attach_defaults(btn1, 0, 1, 0, 1)
-  table.attach_defaults(btn2, 1, 2, 0, 1)
-  table.attach_defaults(btn3, 0, 2, 1, 2)
-  window.add(table)
+  window.title = "#{@d1name}"
+  hbox0.pack_start vollab, true, true, 0
+  hbox1.pack_start btn1, true, true, 0
+  hbox1.pack_start btn2, true, true, 0
+  hbox2.pack_start btn3, true, true, 0
+  hboxinl.pack_start inlab, true, true, 0
+  hbox3.pack_start btn4, true, true, 0
+  hbox3.pack_start btn5, true, true, 0
+  hboxpl.pack_start pwlab, true, true, 0
+  hbox4.pack_start btn6, true, true, 0
+  vbox.pack_start hbox0, true, true, 3
+  vbox.pack_start hbox1, true, true, 0
+  vbox.pack_start hbox2, true, true, 0
+  vbox.pack_start sep1, true, true, 5
+  vbox.pack_start hboxinl, true, true, 3
+  vbox.pack_start hbox3, true, true, 0
+  vbox.pack_start sep2, true, true, 5
+  vbox.pack_start hboxpl, true,true, 3
+  vbox.pack_start hbox4, true, true, 0 
+  
+  window.add(vbox)
+
   window.border_width = 10
   window.show_all
 
@@ -94,31 +149,77 @@ vt.signal_connect('activate'){
 
   def d2
 
-  table = Gtk::Table.new(2, 2, true)
+
+  vbox = Gtk::VBox.new(false, 0)
+  hbox1 = Gtk::HBox.new(false, 0)
+  hbox2 = Gtk::HBox.new(false, 0)
+  hbox3 = Gtk::HBox.new(false, 0)
+  hbox4 = Gtk::HBox.new(false, 0)
+  sep1 = Gtk::HSeparator.new
+  inlab = Gtk::Label.new("Select input :")
+  inlab.set_alignment(0,0)
+  galab = Gtk::Label.new("Set Gain :")
+  galab.set_alignment(0,0)
 
   btn1 = Gtk::Button.new(@d2btn1)
   btn1.signal_connect("clicked") {
-    $server.puts "d2b1"
+    $server.puts "d2b6"
 
-  }  
+  }
+  
+  
 
-  btn2 = Gtk::Button.new(@d2btn2)
-  btn2.signal_connect("clicked") {
-    $server.puts "d2b2"
+  in1 = Gtk::RadioButton.new("#{@d2btn2}")
+  in1.signal_connect("clicked") {
+    $server.puts "d2b1", @actin = 1 if in1.active?
+  }
+  in2 = Gtk::RadioButton.new(in1, "#{@d2btn3}")
+  in2.signal_connect("clicked") {
+    $server.puts "d2b2", @actin = 2 if in2.active?
+  }
+  in3 = Gtk::RadioButton.new(in1, "#{@d2btn4}")
+  in3.signal_connect("clicked") {
+    $server.puts "d2b3", @actin = 3 if in3.active?
+  }
+  in4 = Gtk::RadioButton.new(in1, "#{@d2btn5}")
+  in4.signal_connect("clicked") {
+    $server.puts "d2b4", @actin = 4 if in4.active?
+  }
+  in5 = Gtk::RadioButton.new(in1, "#{@d2btn6}")
+  in5.signal_connect("clicked") {
+    $server.puts "d2b5", @actin = 5 if in5.active?
   }
 
-  btn3 = Gtk::Button.new(@d2btn3)
-  btn3.signal_connect("clicked") {
-    $server.puts "d2b3"
-  }
-
+    case @actin
+    when 1
+      in1.set_active true
+    when 2
+      in2.set_active true
+    when 3
+      in3.set_active true
+    when 4
+      in4.set_active true
+    when 5
+      in5.set_active true
+    else
+    end 
 
   window = Gtk::Window.new
-  window.title = "DAC Control"
-  table.attach_defaults(btn1, 0, 1, 0, 1)
-  table.attach_defaults(btn2, 1, 2, 0, 1)
-  table.attach_defaults(btn3, 0, 2, 1, 2)
-  window.add(table)
+  window.title = "#{@d2name}"
+  hbox1.pack_start galab, true, true, 0
+  hbox1.pack_start btn1, true, true, 0
+  hbox2.pack_start in1, true, true, 0
+  hbox3.pack_start in2, true, true, 0
+  hbox3.pack_start in3, true, true, 0
+  hbox4.pack_start in4, true, true, 0
+  hbox4.pack_start in5, true, true, 0
+  vbox.pack_start hbox1, true, true, 0
+  vbox.pack_start sep1, true, true, 5
+  vbox.pack_start inlab, true, true, 3
+  vbox.pack_start hbox2, true, true, 0
+  vbox.pack_start hbox3, true, true, 0
+  vbox.pack_start hbox4, true, true, 0
+  window.add(vbox)
   window.border_width = 10
   window.show_all
 
