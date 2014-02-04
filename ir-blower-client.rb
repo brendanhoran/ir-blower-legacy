@@ -251,6 +251,15 @@ info=Gtk::ImageMenuItem.new(Gtk::Stock::INFO)
 info.signal_connect('activate'){
 
   def status
+
+  case @actdev
+  when 1
+   @name = @d1name
+  when 2
+   @name = @d2name
+  else 
+   @name = "unknown"
+  end
  
   info = Gtk::Window.new
   table = Gtk::Table.new(3, 3, true)
@@ -263,7 +272,7 @@ info.signal_connect('activate'){
   srvip = Gtk::Label.new(" #{@srvhst}:#{@srvprt} ")
   devstr = Gtk::Label.new("Current Device :")
   devstr.set_alignment(0,0)
-  curdev = Gtk::Label.new(" #{@actdev} ")
+  curdev = Gtk::Label.new(" #{@name} ")
  
   vbox = Gtk::VBox.new(false, 0) 
   hbox1 = Gtk::HBox.new(false, 0)
