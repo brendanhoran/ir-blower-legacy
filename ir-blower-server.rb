@@ -9,17 +9,20 @@ require 'syslog'
 require 'yaml'
 require 'serialport'
 
+
 def checkuid
   uid = Process.uid
   if uid == 0
-   read_config
+    read_config
   else
-   puts "You need to be root to run the server"
-   exit 2
+    puts "You need to be root to run the server"
+    exit 2
   end
 end
 
+
 Syslog.open
+
 
 def read_config
   config = begin
@@ -31,11 +34,13 @@ def read_config
   @ttydev = config["server"]["tty_dev"]
 end
 
+
 checkuid
 read_config
 
 
 $server = TCPServer.new @srvprt
+
 
 def opentty
   begin
@@ -47,7 +52,9 @@ def opentty
     end
 end
 
+
 opentty
+
 
 Syslog.log(Syslog::LOG_INFO, "IR-Blower starting on port : #{@srvprt}")
 
@@ -67,81 +74,55 @@ trap("INT") do
   exit 2
 end
 
+
   def d1b1
-
-    puts "dev1, btn1"
     $tty.write "1"
-
   end
 
   def d1b2
-
-    puts "dev1, btn2"
     $tty.write "2"
   end
 
   def d1b3
-
-    puts "dev1, btn3"
     $tty.write "3"
   end
 
   def d1b4
-
-   puts "dev1, btn4"
    $tty.write "4"
   end
 
   def d1b5
-
-    puts "dev1, btn5"
     $tty.write "5"
   end
 
   def d1b6
-
-    puts "dev1, btn6"
     $tty.write "6"
   end
 
-
   def d2b1
-
-    puts "dev2, btn1"
     $tty.write "a"
   end
 
   def d2b2
-
-    puts "dev2, btn2"
     $tty.write "b"
   end
 
   def d2b3
-
-    puts "dev2, btn3"
     $tty.write "c"
   end
 
   def d2b4
-
-    puts "dev2, btn4"
     $tty.write "d"
   end
 
   def d2b5
-
-    puts "dev2, btn5"
     $tty.write "e"
   end
 
   def d2b6
-
-    puts "dev2, btn6"
     $tty.write "f"
   end
     
-  
 
   loop do
     client = $server.accept
@@ -194,7 +175,6 @@ end
 
 
 end
-
 
 
   client.close
