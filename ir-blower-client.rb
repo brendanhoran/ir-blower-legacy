@@ -260,11 +260,20 @@ info.signal_connect('activate'){
   else 
    @name = "unknown"
   end
+   
+  $server = TCPSocket.new @srvhst, @srvprt
+  $server.write( "status\n" )
+  $server.flush
+  srvmsg = $server.recv( 10 )
+  if srvmsg == "OK"
+    $stat = "Connected"
+  else
+    $stat = "ERROR"
+  end
+  $server.close
  
   info = Gtk::Window.new
-  table = Gtk::Table.new(3, 3, true)
   
-  info.border_width = 10
   info.title = "Information"
 
   title = Gtk::Label.new("Using server :")
@@ -273,20 +282,28 @@ info.signal_connect('activate'){
   devstr = Gtk::Label.new("Current Device :")
   devstr.set_alignment(0,0)
   curdev = Gtk::Label.new(" #{@name} ")
+  srvmsg = Gtk::Label.new("Server connection :")
+  srvmsg.set_alignment(0,0)
+  srvstat = Gtk::Label.new(" #{$stat} ")
+
  
   vbox = Gtk::VBox.new(false, 0) 
   hbox1 = Gtk::HBox.new(false, 0)
   hbox2 = Gtk::HBox.new(false, 0)
+  hbox3 = Gtk::HBox.new(false, 0)
   hbox1.pack_start title, true, true, 0
   hbox1.pack_start srvip, true, true, 0
   hbox2.pack_start devstr, true, true, 0
   hbox2.pack_start curdev, true, true, 0
+  hbox3.pack_start srvmsg, true, true, 0
+  hbox3.pack_start srvstat, true, true, 0
   
 
   info.signal_connect('delete_event') { Gtk.main_quit }
 
   vbox.pack_start hbox1, true, true, 0
   vbox.pack_start hbox2, true, true, 0
+  vbox.pack_start hbox3, true, true, 0
   info.add(vbox)
   info.border_width = 10
   info.show_all
