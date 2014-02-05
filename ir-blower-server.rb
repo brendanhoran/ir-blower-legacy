@@ -132,63 +132,60 @@ end
     
 
   loop do
-    client = $server.accept
-  
-    while ircommand  = client.gets
+    Thread.start($server.accept) do |client|
+        while ircommand  = client.gets
 
-    command = ircommand.chomp
+        command = ircommand.chomp
    
-    case command 
+        case command 
   
-    when "d1b1"
-      d1b1()
+        when "d1b1"
+            d1b1()
 
-    when "d1b2"
-      d1b2()
+        when "d1b2"
+            d1b2()
 
-    when "d1b3" 
-      d1b3()
+        when "d1b3" 
+            d1b3()
 
-    when "d1b4"
-      d1b4()
+        when "d1b4"
+            d1b4()
 
-    when "d1b5"
-      d1b5()
+        when "d1b5"
+            d1b5()
    
-    when "d1b6"
-      d1b6()
+        when "d1b6"
+            d1b6()
 
-    when "d2b1"
-      d2b1()
+        when "d2b1"
+            d2b1()
     
-    when "d2b2"
-      d2b2()
+        when "d2b2"
+            d2b2()
 
-    when "d2b3"
-      d2b3()
+        when "d2b3"
+            d2b3()
 
-    when "d2b4"
-      d2b4()
+        when "d2b4"
+            d2b4()
 
-    when "d2b5"
-      d2b5()
+        when "d2b5"
+            d2b5()
 
-    when "d2b6"
-      d2b6()
+        when "d2b6"
+            d2b6()
 
-    when "status"
-      status(client)
+        when "status"
+            status(client)
 
-    else 
-      Syslog.log(Syslog::LOG_ERR, "IR-BLower got invalid client option!")
-    end 
+        else 
+            Syslog.log(Syslog::LOG_ERR, "IR-BLower got invalid client option!")
+        end 
 
+    end
+end
 
 end
 
 
-  client.close
-
-
-end
 
