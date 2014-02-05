@@ -272,8 +272,8 @@ info.signal_connect('activate'){
   $server = TCPSocket.new @srvhst, @srvprt
   $server.write( "status\n" )
   $server.flush
-  srvmsg = $server.recv( 10 )
-  if srvmsg == "OK"
+  srvmsg = $server.gets
+  if srvmsg.strip == "OK"
     $stat = "Connected"
   else
     $stat = "ERROR"
