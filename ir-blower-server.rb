@@ -123,12 +123,10 @@ end
     $tty.write "f"
   end
   
-  def status
-   loop do
-      Thread.start ($server.accept) do |stat|
-      stat.write("OK")
-      stat.close
-    end
+  def status(client)
+      Thread.start (client) do |stat|
+      stat.puts("OK")
+      #stat.close
   end  
   end
     
@@ -179,7 +177,7 @@ end
       d2b6()
 
     when "status"
-      status()
+      status(client)
 
     else 
       Syslog.log(Syslog::LOG_ERR, "IR-BLower got invalid client option!")
@@ -193,3 +191,4 @@ end
 
 
 end
+
