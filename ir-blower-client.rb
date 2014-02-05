@@ -51,15 +51,6 @@ trap("INT") do
   exit 2
 end
 
-# Send wake up message to server for status function.
-def srvhbt
-  $server = TCPSocket.new @srvhst, @srvprt
-  $server.write( "status\n" )
-  $server.flush
-  $server.close
-end
-
-srvhbt
 
 
 # Taskbar icon
