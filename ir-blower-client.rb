@@ -51,8 +51,16 @@ trap("INT") do
   exit 2
 end
 
+# Send wake up message to server for status function.
+def srvhbt
+  $server = TCPSocket.new @srvhst, @srvprt
+  $server.write( "status\n" )
+  $server.flush
+  $server.close
+end
 
-#$server = TCPSocket.new @srvhst, @srvprt
+srvhbt
+
 
 # Taskbar icon
 vt=Gtk::StatusIcon.new
@@ -276,7 +284,7 @@ info.signal_connect('activate'){
   
   info.title = "Information"
 
-  title = Gtk::Label.new("Using server :")
+  title = Gtk::Label.new("Using server/port :")
   title.set_alignment(0,0)
   srvip = Gtk::Label.new(" #{@srvhst}:#{@srvprt} ")
   devstr = Gtk::Label.new("Current Device :")
