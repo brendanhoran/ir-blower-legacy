@@ -125,9 +125,9 @@ end
   
   def status
    loop do
-     Thread.start ($server.accept) do |s|
-        s.write("OK")
-        s.close
+      Thread.start ($server.accept) do |stat|
+      stat.write("OK")
+      stat.close
     end
   end  
   end
