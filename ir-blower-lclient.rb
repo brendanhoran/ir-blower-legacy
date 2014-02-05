@@ -18,4 +18,6 @@ end
 lblower = TCPSocket.new 'localhost', 2000
 
 lblower.puts ARGV.first
+response = lblower.gets.strip
+puts "Response: " + response
 lblower.close
