@@ -132,7 +132,7 @@ end
     
 
   loop do
-    client = $server.accept
+    Thread.start($server.accept) do |client|
   
     while ircommand  = client.gets
 
@@ -187,8 +187,7 @@ end
 end
 
 
-  client.close
-
 
 end
 
+end
