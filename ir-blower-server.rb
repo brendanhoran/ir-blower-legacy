@@ -39,7 +39,7 @@ checkuid
 read_config
 
 
-$server = TCPServer.open @srvprt
+$server = TCPServer.new @srvprt
 
 
 def opentty
@@ -125,8 +125,8 @@ end
   
   def status(client)
       Thread.start (client) do |stat|
-      stat.write("OK")
-      stat.close
+      stat.puts("OK")
+      #stat.close
   end  
   end
     
