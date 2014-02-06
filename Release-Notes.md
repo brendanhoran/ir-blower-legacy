@@ -22,3 +22,23 @@ Inital Commit of :
 
 Still Alpha stage. Buttons and device mapping work.
 Sending commands to arduino works.
+
+
+Version 1.0.0
+-------------
+
+First functional code release.
+
+This version all functions work. There are no major bugs.
+Some issues with trapping exits needs fixing.
+How ever the code/apps work as intended.
+
+Release consists of :
+* ir-blower-client.rb
+* ir-blower-server.rb
+* ir-blower-lclient.rb
+* ir_blower.ino
+* server-config.yaml
+* client-config.yaml
+
+
