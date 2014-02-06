@@ -1,3 +1,9 @@
+# Author  : Brendan Horan
+# License : BSD 3-Clause
+# Version : 1.0.0
+
+
+# Server config settings
 server:
   listen_port : 2000
   tty_dev : /dev/ttyUSB3

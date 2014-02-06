@@ -1,3 +1,9 @@
+# Author  : Brendan Horan
+# License : BSD 3-Clause
+# Version : 1.0.0
+
+
+# Client config settings
 client:
   server_ip : localhost
   server_port : 2000
