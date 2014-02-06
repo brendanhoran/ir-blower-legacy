@@ -47,7 +47,8 @@ Install guide
 9. Start the server as backbround process, then start the client on your pc.
 
 Optionally you can use the ir-blower-lclient.rb to send commands to the server , from the server via the command line.
-For example you could have a cron entry that sends a button click for example :
+For example you could have a cron entry that sends a button click for example :    
+
 05 00 * * * ir-blower-lclient.rb d1b6 > /dev/null 2>&1
 
 This would at 5am send the button press "d1b6" to the server.
