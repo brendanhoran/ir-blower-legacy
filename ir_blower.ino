@@ -5,8 +5,9 @@
 // Physical pin 3 -> IR sender
 // Physical pin 4 -> power control
 //
-// Requires the IRremote libary :
+// Requires the IRremote library :
 // https://github.com/shirriff/Arduino-IRremote
+// NOTE some libraries are licensed under other licenses
 
 
 #include <IRremote.h>
