@@ -1,7 +1,12 @@
 // Author  : Brendan Horan
 // License : BSD 3-Clause
-// Version : 0.0.1
-
+// Version : 1.0.0
+//
+// Physical pin 3 -> IR sender
+// Physical pin 4 -> power control
+//
+// Requires the IRremote libary :
+// https://github.com/shirriff/Arduino-IRremote
 
 
 #include <IRremote.h>
@@ -22,6 +27,7 @@ void setup() {
         Serial.println ("OK");
 }
 
+
 void loop() {
   
 
@@ -33,8 +39,8 @@ void loop() {
                 
 
                // send IR signal based on value from ir-blower server
-               // 49 = dev 1, btn1 (rubyval, 1)
-               // 97 = dev 2, btn1 (rubyval, a)
+	       // IR-blower-server will send value (1-6, a-f)
+               // Arduino client reads the ASCII value and acts on it
                
                 switch (ctlmsg) {
                   case 49:
