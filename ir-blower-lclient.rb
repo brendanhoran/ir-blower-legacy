@@ -28,3 +28,4 @@ lblower.puts ARGV.first
   response = lblower.gets.strip
   puts "Response: " + response
 lblower.close
+exit 0
