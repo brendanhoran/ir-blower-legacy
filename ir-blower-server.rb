@@ -198,7 +198,7 @@ loop do
           status(client)
 
         else 
-          Syslog.log(Syslog::LOG_ERR, "IR-BLower got invalid client option!")
+          Syslog.log(Syslog::LOG_ERR, "IR-BLower got invalid client option! : #{command}")
 
       end 
     end
