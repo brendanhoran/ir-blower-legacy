@@ -9,7 +9,6 @@ import android.app.Activity;
 import java.net.Socket;
 import java.io.IOException;
 import java.io.DataOutputStream;
-//import java.io.PrintWriter;
 import android.os.Bundle;
 import android.widget.Button;
 import android.view.View;
@@ -24,11 +23,10 @@ public class irblower extends Activity {
   Button buttonMu;
   Button buttonPw;
   Socket Client;
-  //PrintWriter out = null;
   DataOutputStream clientCmd = null;
 
-  static String IP = "192.168.0.166";
-  static int Port = 2000;
+  static String IP = "10.36.24.100";
+  static int Port = 80;
  
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -49,7 +47,6 @@ public class irblower extends Activity {
           clientCmd.writeBytes("d1b4"+'\n');
           clientCmd.close();
         } catch (IOException e) {
-          //System.out.println(e);
         }
       }  				
     });
@@ -65,7 +62,6 @@ public class irblower extends Activity {
           clientCmd.writeBytes("d1b5"+'\n');
           clientCmd.close();
         } catch (IOException e) {
-          //System.out.println(e);
         }
      }   
     });
@@ -81,7 +77,6 @@ public class irblower extends Activity {
           clientCmd.writeBytes("d1b3"+'\n');
           clientCmd.close();
         } catch (IOException e) {
-          //System.out.println(e);
         }
       }
     });
@@ -97,7 +92,6 @@ public class irblower extends Activity {
           clientCmd.writeBytes("d1b6"+'\n');
           clientCmd.close();
         } catch (IOException e) {
-          //System.out.println(e);
         }
       }
     });
