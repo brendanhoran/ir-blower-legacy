@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<TextView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="Master 9 control"
+    />
+<Button
+     android:id="@+id/buttonUp"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:text="Volume up"
+    />
+<Button
+     android:id="@+id/buttonDn"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:text="Volume down" 
+    />
+<Button
+     android:id="@+id/buttonMu"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:text="Mute"
+    />
+<Button
+     android:id="@+id/buttonPw"
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:text="Power On/Off"
+    />
+</LinearLayout>
+
