@@ -24,7 +24,7 @@ Dependencys
   List of gems:
   * socket
   * syslog
-  * gtk2
+  * gtk3
   * yaml
   * serialport
 
