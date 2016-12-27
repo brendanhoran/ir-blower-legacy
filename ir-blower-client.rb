@@ -41,11 +41,6 @@ trap("TERM") do
   exit 2
 end
 
-trap("KILL") do
-  STDERR.puts "IR-BLower Client force killed"
-  exit 2
-end 
-
 trap("INT") do
   STDERR.puts " IR-Blower Client got Crtl-C, Killed"
   exit 2
